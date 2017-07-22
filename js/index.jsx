@@ -16,12 +16,13 @@ export default class App extends Component {
     return (
         <div className="clearfix pl2 pr2">
             <h2 className="center">mycalpal</h2>
+            <p className="center h5 italic">"{model.quote}"</p>
             <section className={`${gridStyle} main`}>
                 <div className="relative arrow-container">
                     <i className={`${arrowStyle} left-0 fa fa-arrow-left`} onClick="" aria-hidden="true"></i>
                     <i className={`${arrowStyle} right-0 fa fa-arrow-right`} onClick="" aria-hidden="true"></i>
                 </div>
-                <div className="center">Mon, July 17, 2017</div>
+                <div className="center">Sun, July 16, 2017</div>
             </section>
             <section className={`${gridStyle} visual`}>
                 <div className="center">Calories per Meal:</div>
