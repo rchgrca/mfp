@@ -7,3 +7,4 @@
   * create single JSON structure to feed Redux store
   * use Redux store to mutate state for adding, removing food items
   * use your own table markup
+  * add support for CircleCI deployment
