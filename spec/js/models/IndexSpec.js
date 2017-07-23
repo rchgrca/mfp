@@ -25,6 +25,15 @@ describe("The JSON data model", () => {
             })
         })
 
+        it("has a list of macronutrients", () => {
+            let macronutrients = model.macronutrients,
+            mymacronutrients = ['calories','carbs','fat','protein','sugar'];
+
+            macronutrients.map((macro) => {
+                expect(mymacronutrients.includes(macro)).toEqual(true)
+            })
+        })
+
         it("has an object for each food consumed representing the name, serving, calories, carbs, fat, protein, sugar", () => {
             let date = "2017-07-17",
             mealData = model.dates[date].meals,

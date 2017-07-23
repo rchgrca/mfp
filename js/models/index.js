@@ -2,6 +2,7 @@ export default Object.assign({}, {
     name: "Richard L. Garcia",
     email: "rchgrca@gmail.com",
     quote: "Meditation for Mindfulness for Good Choices",
+    macronutrients:['calories','carbs','fat','protein','sugar'],
     dates:{
         "2017-07-17":{
             meals: {
