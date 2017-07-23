@@ -9,40 +9,36 @@ describe("The JSON data model", () => {
         })
     })
 
-    describe("the daily food logged", () => {
+    describe("has daily food intake logged", () => {
         it("has an array of dates", () => {
             expect(model.dates).toBeDefined()
-            expect(Array.isArray(model.dates)).toEqual(true)
-            model.dates.forEach((date) => {
-                expect(moment(Object.keys(date)[0]).isValid()).toEqual(true)
-            })
+            expect(moment(Object.keys(model.dates)[0]).isValid()).toEqual(true)
         })
 
-        it("has an array of 3 daily meals and an array of snacks", () => {
-            model.dates.forEach((date) => {
-                expect(date[Object.keys(date)[0]].breakfast).toBeDefined()
-                expect(date[Object.keys(date)[0]].lunch).toBeDefined()
-                expect(date[Object.keys(date)[0]].dinner).toBeDefined()
-                expect(date[Object.keys(date)[0]].snacks).toBeDefined()
+        it("has meals:  breakfast, lunch, dinner, snacks", () => {
+            let date = "2017-07-17",
+            mealData = model.dates[date].meals,
+            mealName = Object.keys(mealData)
+
+            mealName.map((meal) => {
+                expect(mealData[meal]).toBeDefined()
             })
         })
 
         it("has an object for each food consumed representing the name, serving, calories, carbs, fat, protein, sugar", () => {
-            model.dates.forEach((date) => {
-                let day = date[Object.keys(date)[0]]
-                let meals = Object.keys(day)
+            let date = "2017-07-17",
+            mealData = model.dates[date].meals,
+            mealName = Object.keys(mealData)
 
-                meals.forEach((meal) => {
-                    var foods = day[meal]
-                    foods.forEach((entry) => {
-                        expect(entry.food).toBeDefined()
-                        expect(entry.serving).toBeDefined()
-                        expect(entry.calories).toBeDefined()
-                        expect(entry.carbs).toBeDefined()
-                        expect(entry.fat).toBeDefined()
-                        expect(entry.protein).toBeDefined()
-                        expect(entry.sugar).toBeDefined()
-                    })
+            mealName.map((meal) => {
+                mealData[meal].map((item) => {
+                    expect(item.food).toBeDefined()
+                    expect(item.serving).toBeDefined()
+                    expect(item.calories).toBeDefined()
+                    expect(item.carbs).toBeDefined()
+                    expect(item.fat).toBeDefined()
+                    expect(item.protein).toBeDefined()
+                    expect(item.sugar).toBeDefined()
                 })
             })
         })

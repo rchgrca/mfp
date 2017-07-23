@@ -22,7 +22,7 @@ tbody tr:nth-of-type(2n) {
 td .truncate {
     width: 270px;
 }
-i.fa {
+i.fa-trash-o {
     top: 10px;
     right: 5px;
 }
@@ -32,16 +32,24 @@ i.fa {
 .capitalize {
     text-transform: capitalize;
 }
+.metahead {
+    display: none;
+}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     table {width:100%;}
-    thead {display: none;}
-    tr:nth-of-type(2n) {background-color: inherit;}
-    tr td:first-child {background: #f0f0f0; font-weight:bold;font-size:1.3em;}
+    thead tr td {display: none;}
+    thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
+    tr, td {background-color: #fff}
+    tr td:first-child {background: #f0f0f0; font-weight:bold;font-size:inherit;}
     tbody td {display: block;  text-align:center;}
     tbody td:before {
         content: attr(data-th);
         display: block;
         text-align:center;
+    }
+    .metahead {
+        display: block;
+        font-style: italic;
     }
 }

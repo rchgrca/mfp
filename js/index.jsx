@@ -12,10 +12,10 @@ export default class App extends Component {
   render() {
     let pie = model.pie,
     gridStyle = "sm-col sm-col-6",
-    arrowStyle = "absolute cursor",
-    date = "2017-07-16",
-    day = model[date],
-    meals = Object.keys(day)
+    arrowStyle = "absolute cursor top-0 fa",
+    date = "2017-07-17",
+    mealData = model.dates[date].meals,
+    mealName = Object.keys(mealData)
 
     return (
         <div className="clearfix pl1 pr1">
@@ -23,13 +23,13 @@ export default class App extends Component {
             <p className="center h5 italic">"{model.quote}"</p>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
-                    <i className={`${arrowStyle} fa fa-arrow-left left-0`} onClick="" aria-hidden="true"></i>
-                    <i className={`${arrowStyle} fa fa-arrow-right right-0`} onClick="" aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-left left-0`} onClick="" aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-right right-0`} onClick="" aria-hidden="true"></i>
                 </div>
                 <div className="day">
-                    <div className="center mb2 date">{moment(date).format('MMMM Do, YYYY')}</div>
+                    <div className="center mb3 date">{moment(date).format('MMMM Do, YYYY')}</div>
                     <div className="">
-                        {this.getMeals(day, meals)}
+                        {this.getMeals(mealData,mealName)}
                     </div>
                 </div>
             </section>
@@ -41,10 +41,10 @@ export default class App extends Component {
     )
   }
 
-  getMeals(day, meals){
-      return meals.map((meal) => {
+  getMeals(mealData,mealName){
+      return mealName.map((meal) => {
           return (
-              <table className="mx-auto mb2">
+              <table className="mx-auto mb3">
                   <thead>
                       <tr>
                           <td><div className="capitalize bold">{meal}</div></td>
@@ -56,28 +56,28 @@ export default class App extends Component {
                       </tr>
                   </thead>
                   <tbody>
-                      {this.getFoodItems(day, meal)}
+                      {this.getFoodItems(mealData,meal)}
                   </tbody>
               </table>
           )
       })
   }
 
-  getFoodItems(day, meal){
+  getFoodItems(mealData,meal){
       let styles = "border border-white center";
 
-      return day[meal].map((item) => {
+      return mealData[meal].map((item) => {
           return (
               <tr>
                   <td className="border border-white relative px1 py1">
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
-                      <i className="fa fa-trash-o absolute top-0 right-0 cursor" title="Delete"/>
+                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete"/>
                   </td>
-                  <td className={styles}>{item.calories} cals</td>
-                  <td className={styles}>{item.carbs} g</td>
-                  <td className={styles}>{item.fat} g</td>
-                  <td className={styles}>{item.protein} g</td>
-                  <td className={styles}>{item.sugar} g</td>
+                  <td className={styles}><span className="metahead">Calories: </span>{item.calories} cals</td>
+                  <td className={styles}><span className="metahead">Carbs: </span>{item.carbs} g</td>
+                  <td className={styles}><span className="metahead">Fat: </span>{item.fat} g</td>
+                  <td className={styles}><span className="metahead">Protein: </span>{item.protein} g</td>
+                  <td className={styles}><span className="metahead">Sugar: </span>{item.sugar} g</td>
               </tr>
           )
       })
