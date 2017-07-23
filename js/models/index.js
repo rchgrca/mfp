@@ -39,8 +39,8 @@ export default Object.assign({}, {
         labels: ["Breakfast", "Lunch", "Dinner", "Snacks"],
         datasets: [{
             data: [641, 210, 510, 150],
-            backgroundColor: ["darkblue", "orange", "forestgreen", "darkred"],
-            hoverBackgroundColor: ["darkblue", "orange", "forestgreen", "darkred"],
+            backgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
+            hoverBackgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
             borderWidth: [0,0,0,0,0,0,0,0],
             legend: {
                 itemStyle: {

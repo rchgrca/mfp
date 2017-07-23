@@ -52,12 +52,7 @@ export default class App extends Component {
                   <table className="mx-auto mb3">
                       <thead>
                           <tr>
-                              <td><div className="capitalize bold">{meal}</div></td>
-                              <td className="border border-navy bg-white center"><div className="">Calories</div></td>
-                              <td className="border border-navy bg-white center"><div className="">Carbs</div></td>
-                              <td className="border border-navy bg-white center"><div className="">Fat</div></td>
-                              <td className="border border-navy bg-white center"><div className="">Protein</div></td>
-                              <td className="border border-navy bg-white center"><div className="">Sugar</div></td>
+                              <td><div className="capitalize bold" colSpan="6">{meal}</div></td>
                           </tr>
                       </thead>
                       <tbody>
