@@ -9,3 +9,4 @@
   * use your own table markup
   * add support for CircleCI deployment
   * add unit tests for model
+  * functional CSS, write as little CSS as possible

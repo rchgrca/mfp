@@ -2,13 +2,7 @@ html, body {
     height: 100%;
 }
 body {
-    margin: 0; /*
-    background: linear-gradient(to bottom, #ffffff 18%, #cccccc 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #909090; */
     font-family: Arial,Helvetica,sans-serif;
-
 }
 input:focus {
     outline: none;
@@ -18,6 +12,9 @@ table {
 }
 tbody tr:nth-of-type(2n) {
     background-color: #e9e9e9;
+}
+tr.bg-white-force {
+    background-color: #ffffff !important;
 }
 td .truncate {
     width: 270px;
@@ -34,6 +31,12 @@ i.fa-trash-o {
 }
 .metahead {
     display: none;
+}
+.w100 {
+    width: 100%;
+}
+::-webkit-input-placeholder {
+   text-align: center;
 }
 
 @media screen and (max-width: 768px) {
