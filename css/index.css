@@ -38,6 +38,9 @@ i.fa-trash-o {
 ::-webkit-input-placeholder {
    text-align: center;
 }
+.header {
+    background-color: darkblue;
+}
 
 @media screen and (max-width: 768px) {
     table {width:100%;}
@@ -51,8 +54,21 @@ i.fa-trash-o {
         display: block;
         text-align:center;
     }
+    input[type='text'] {
+        padding: 15px;
+    }
+    button {
+        text-align: center;
+    }
     .metahead {
         display: block;
         font-style: italic;
+    }
+    .btn {
+        padding: 15px;
+    }
+    .btn-container {
+        text-align: center;
+        border: 1px solid #000;
     }
 }

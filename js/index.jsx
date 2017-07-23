@@ -19,18 +19,21 @@ export default class App extends Component {
     mealName = Object.keys(mealData)
 
     return (
-        <div className="clearfix pl1 pr1">
-            <h2 className="center navy">mycalpal</h2>
-            <p className="center h5 italic navy">"{model.quote}"</p>
+        <div className="clearfix px1">
+            <section className="header py1 mb2">
+                <h2 className="center white">mycalpal</h2>
+                <p className="center h5 italic white">"{model.quote}"</p>
+            </section>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
                     <i className={`${arrowStyle} fa-arrow-left left-0`} onClick="" aria-hidden="true"></i>
                     <i className={`${arrowStyle} fa-arrow-right right-0`} onClick="" aria-hidden="true"></i>
                 </div>
                 <div className="day">
-                    <div className="center mb3 date navy">{moment(date).format('MMMM Do, YYYY')}</div>
-                    <div className="">
+                    <div className="center mb1 date navy">{moment(date).format('MMMM Do, YYYY')}</div>
+                    <div className="food-data">
                         {this.getMeals(mealData, mealName, cellStyle)}
+                        {this.getMacroTotals()}
                     </div>
                 </div>
             </section>
@@ -88,7 +91,7 @@ export default class App extends Component {
 
   getForm(){
       let cellStyle = "border border-white",
-      inputStyle = "border-box w100"
+      inputStyle = "border-box w100 p1"
       return (
           <tr className="bg-white-force">
               <td className={cellStyle}><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
@@ -105,7 +108,7 @@ export default class App extends Component {
       let cellStyle = "border border-white";
       return (
           <tr className="bg-white-force">
-              <td className={`right-align`} colSpan="6"><button class="btn not-rounded">Add Food</button></td>
+              <td className="btn-container right-align" colSpan="6"><button className="btn not-rounded p1">Add Food</button></td>
           </tr>
       )
   }
@@ -114,7 +117,33 @@ export default class App extends Component {
       console.log("Add Food Handle Submit!")
   }
 
-
+  getMacroTotals(){
+      let cellStyle = "border border-white";
+      return (
+          <table className="mx-auto mb3 w100">
+              <thead>
+                  <tr>
+                      <td><div className="capitalize bold">Total Today</div></td>
+                      <td className="border border-navy bg-white center"><div className="">Calories</div></td>
+                      <td className="border border-navy bg-white center"><div className="">Carbs</div></td>
+                      <td className="border border-navy bg-white center"><div className="">Fat</div></td>
+                      <td className="border border-navy bg-white center"><div className="">Protein</div></td>
+                      <td className="border border-navy bg-white center"><div className="">Sugar</div></td>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr className="bg-white-force">
+                      <td className={`${cellStyle} center`}><span className="metahead">Today Today</span></td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>100 cals</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>100 cals</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>100 cals</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>100 cals</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>100 cals</td>
+                  </tr>
+              </tbody>
+          </table>
+      )
+  }
 }
 
 render(<App/>, document.getElementById('app'));
