@@ -57,10 +57,11 @@ export default class App extends Component {
                       <tbody>
                           {this.getFoodItems(meal)}
                           {this.getNutrientMeal(meal)}
-                          {this.getForm()}
-                          {this.getSubmitButton()}
+                          {this.getForm(meal)}
+                          {this.getSubmitButton(meal)}
                       </tbody>
                   </table>
+                  <input type="hidden" name="meal" value={meal}/>
               </form>
           )
       })
@@ -86,7 +87,7 @@ export default class App extends Component {
       })
   }
 
-  getForm(){
+  getForm(meal){
       let cellStyle = this.getCellStyle(),
       inputStyle = "border-box w100"
       return (
@@ -101,16 +102,20 @@ export default class App extends Component {
       )
   }
 
-  getSubmitButton(){
+  getSubmitButton(meal){
       return (
           <tr className="bg-white-force">
-              <td className="btn-container right-align" colSpan="6"><button className="btn not-rounded p1">Add Food</button></td>
+              <td className="btn-container right-align" colSpan="6"><input type="submit" className="btn not-rounded p1 cursor" value="Add Food" /></td>
           </tr>
       )
   }
 
   handleSubmit(e){
+      e.preventDefault();
       console.log("Add Food Handle Submit!",e)
+      //console.log(this.refs)
+    //   const author = this.refs.author.value;
+    //   const comment = this.refs.comment.value;
   }
 
   handleArrows(e){
