@@ -56,6 +56,7 @@ export default class App extends Component {
                       </thead>
                       <tbody>
                           {this.getFoodItems(meal)}
+                          {this.getNutrientMeal(meal)}
                           {this.getForm()}
                           {this.getSubmitButton()}
                       </tbody>
@@ -87,7 +88,7 @@ export default class App extends Component {
 
   getForm(){
       let cellStyle = this.getCellStyle(),
-      inputStyle = "border-box w100 p1"
+      inputStyle = "border-box w100"
       return (
           <tr className="bg-white-force">
               <td className={cellStyle}><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
@@ -112,6 +113,21 @@ export default class App extends Component {
       console.log("Add Food Handle Submit!")
   }
 
+  getNutrientMeal(meal){
+      let cellStyle = this.getCellStyle(),
+      date = this.getDate();
+      return (
+          <tr className="bg-white-force">
+              <td className={`${cellStyle}`}><span className="metahead">Total</span>Total</td>
+              <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
+              <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
+              <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>
+              <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{this.getNutrientMealTotal(date, meal, "protein")} g</td>
+              <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{this.getNutrientMealTotal(date, meal, "sugar")} g</td>
+          </tr>
+      )
+  }
+
   getMacroTotals(){
       let date = this.getDate(),
       cellStyle = this.getCellStyle();
@@ -119,17 +135,17 @@ export default class App extends Component {
           <table className="mx-auto mb3 w100">
               <thead>
                   <tr>
-                      <td><div className="capitalize bold">Total Today</div></td>
-                      <td className="border border-navy bg-white center"><div className="">Calories</div></td>
-                      <td className="border border-navy bg-white center"><div className="">Carbs</div></td>
-                      <td className="border border-navy bg-white center"><div className="">Fat</div></td>
-                      <td className="border border-navy bg-white center"><div className="">Protein</div></td>
-                      <td className="border border-navy bg-white center"><div className="">Sugar</div></td>
+                      <td><div className="bold">Total Today</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Calories</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Carbs</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Fat</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Protein</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Sugar</div></td>
                   </tr>
               </thead>
               <tbody>
                   <tr className="bg-white-force">
-                      <td className={`${cellStyle} center`}><span className="metahead">Today Today</span></td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Total Today</span></td>
                       <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
                       <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
                       <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
@@ -155,6 +171,14 @@ export default class App extends Component {
 
   getDate(){
       return "2017-07-17"
+  }
+
+  getNutrientMealTotal(date, meal, nutrient){
+      let oMeals = this.getModel();
+      console.log(oMeals.data[meal])
+      return oMeals.data[meal].reduce((sum, item) => {
+          return sum + item[nutrient]
+      },0);
   }
 
   getNutrientTotals(date, nutrient){
