@@ -24,8 +24,8 @@ export default class App extends Component {
             </section>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
-                    <i className={`${arrowStyle} fa-arrow-left left-0`} onClick="" aria-hidden="true"></i>
-                    <i className={`${arrowStyle} fa-arrow-right right-0`} onClick="" aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-left left-0`} onClick={this.handleArrows.bind(this)} aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-right right-0`} onClick={this.handleArrows.bind(this)} aria-hidden="true"></i>
                 </div>
                 <div className="day">
                     <div className="center mb1 date navy">{moment(date).format('MMMM Do, YYYY')}</div>
@@ -109,8 +109,18 @@ export default class App extends Component {
       )
   }
 
-  handleSubmit(){
-      console.log("Add Food Handle Submit!")
+  handleSubmit(e){
+      console.log("Add Food Handle Submit!",e)
+  }
+
+  handleArrows(e){
+      e.preventDefault();
+      let date = this.getDate(),
+      yesterday = moment(date).add(-1, 'days').format('YYYY-MM-DD'),
+      tomorrow = moment(date).add(1, 'days').format('YYYY-MM-DD'),
+      day = e.target.className.includes("right") ? tomorrow : yesterday
+
+      console.log("handleArrows",day)
   }
 
   getNutrientMeal(meal){
@@ -175,7 +185,6 @@ export default class App extends Component {
 
   getNutrientMealTotal(date, meal, nutrient){
       let oMeals = this.getModel();
-      console.log(oMeals.data[meal])
       return oMeals.data[meal].reduce((sum, item) => {
           return sum + item[nutrient]
       },0);
