@@ -13,10 +13,8 @@ export default class App extends Component {
     let pie = model.pie,
     gridStyle = "sm-col sm-col-6",
     arrowStyle = "absolute cursor top-0 fa",
-    cellStyle = "border border-white p1",
-    date = "2017-07-17",
-    mealData = model.dates[date].meals,
-    mealName = Object.keys(mealData)
+    date = this.getDate(),
+    oMeals = this.getModel();
 
     return (
         <div className="clearfix px1">
@@ -32,21 +30,22 @@ export default class App extends Component {
                 <div className="day">
                     <div className="center mb1 date navy">{moment(date).format('MMMM Do, YYYY')}</div>
                     <div className="food-data">
-                        {this.getMeals(mealData, mealName, cellStyle)}
-                        {this.getMacroTotals(date)}
+                        {this.getMeals()}
+                        {this.getMacroTotals()}
                     </div>
                 </div>
             </section>
             <section className={`${gridStyle} visual`}>
-                <div className="center navy">Calories per Meal:</div>
+                <div className="center navy">Calories per Meal Today:</div>
                 <Pie data={pie} options={pie.options}/>
             </section>
         </div>
     )
   }
 
-  getMeals(mealData,mealName, cellStyle){
-      return mealName.map((meal) => {
+  getMeals(){
+      let oMeals = this.getModel();
+      return oMeals.name.map((meal) => {
           return (
               <form ref="addFoodForm" className="" onSubmit={this.handleSubmit}>
                   <table className="mx-auto mb3">
@@ -56,8 +55,8 @@ export default class App extends Component {
                           </tr>
                       </thead>
                       <tbody>
-                          {this.getFoodItems(mealData, meal, cellStyle)}
-                          {this.getForm(cellStyle)}
+                          {this.getFoodItems(meal)}
+                          {this.getForm()}
                           {this.getSubmitButton()}
                       </tbody>
                   </table>
@@ -66,8 +65,10 @@ export default class App extends Component {
       })
   }
 
-  getFoodItems(mealData, meal, cellStyle){
-      return mealData[meal].map((item) => {
+  getFoodItems(meal){
+      let oMeals = this.getModel(),
+      cellStyle = this.getCellStyle();
+      return oMeals.data[meal].map((item) => {
           return (
               <tr>
                   <td className={`${cellStyle} relative`}>
@@ -85,7 +86,7 @@ export default class App extends Component {
   }
 
   getForm(){
-      let cellStyle = "border border-white",
+      let cellStyle = this.getCellStyle(),
       inputStyle = "border-box w100 p1"
       return (
           <tr className="bg-white-force">
@@ -100,7 +101,6 @@ export default class App extends Component {
   }
 
   getSubmitButton(){
-      let cellStyle = "border border-white";
       return (
           <tr className="bg-white-force">
               <td className="btn-container right-align" colSpan="6"><button className="btn not-rounded p1">Add Food</button></td>
@@ -112,9 +112,9 @@ export default class App extends Component {
       console.log("Add Food Handle Submit!")
   }
 
-  getMacroTotals(date){
-      let cellStyle = "border border-white"
-
+  getMacroTotals(){
+      let date = this.getDate(),
+      cellStyle = this.getCellStyle();
       return (
           <table className="mx-auto mb3 w100">
               <thead>
@@ -130,28 +130,42 @@ export default class App extends Component {
               <tbody>
                   <tr className="bg-white-force">
                       <td className={`${cellStyle} center`}><span className="metahead">Today Today</span></td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientTotals("2017-07-17", "calories")} cals</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientTotals("2017-07-17", "carbs")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientTotals("2017-07-17", "fat")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{this.getNutrientTotals("2017-07-17", "protein")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{this.getNutrientTotals("2017-07-17", "sugar")} g</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{this.getNutrientTotals(date, "protein")} g</td>
+                      <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{this.getNutrientTotals(date, "sugar")} g</td>
                   </tr>
               </tbody>
           </table>
       )
   }
 
-  getNutrientTotals(date, nutrient){
-      let mealData = model.dates[date].meals,
-      mealName = Object.keys(mealData)
+  getModel(){
+      let date = this.getDate();
+      return {
+          data:model.dates[date].meals,
+          name:Object.keys(model.dates[date].meals)
+      }
+  }
 
-      return mealName.map((meal) => {
-          return mealData[meal]
+  getCellStyle(){
+      return "border p1"
+  }
+
+  getDate(){
+      return "2017-07-17"
+  }
+
+  getNutrientTotals(date, nutrient){
+      let oMeals = this.getModel();
+      return oMeals.name.map((meal) => {
+          return oMeals.data[meal]
       }).reduce((a,b) => {
           return a.concat(b)
       }).reduce((sum, item) => {
           return sum + item[nutrient]
-      },0)
+      },0);
   }
 }
 
