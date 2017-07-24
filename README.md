@@ -10,4 +10,4 @@
   * add support for CircleCI deployment
   * add unit tests for model
   * functional CSS, write as little CSS as possible
-  * functional
+  * use functional programing principles (immutability, composition)
