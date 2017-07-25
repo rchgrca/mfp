@@ -16,7 +16,7 @@ export default class App extends Component {
   render() {
     let gridStyle = "sm-col sm-col-6",
     arrowStyle = "absolute cursor top-0 fa",
-    date = this.state.date,
+    { date } = this.state,
     oMeals = this.getModel();
 
     return (
@@ -39,11 +39,11 @@ export default class App extends Component {
                 </div>
             </section>
             <section className={`${gridStyle} visual`}>
-                <div className="center navy">Calories per Meal Today (kcal):</div>
+                <div className="center navy">Calories per Meal (kcal):</div>
                 <Pie data={this.setPieModel('calories')} options={model.pie.options}/>
-                <div className="center navy mt3">Carbs per Meal Today (g):</div>
+                <div className="center navy mt3">Carbs per Meal (g):</div>
                 <Pie data={this.setPieModel('carbs')} options={model.pie.options}/>
-                <div className="center navy mt3">Sugar per Meal Today (g):</div>
+                <div className="center navy mt3">Sugar per Meal (g):</div>
                 <Pie data={this.setPieModel('sugar')} options={model.pie.options}/>
             </section>
         </div>
@@ -52,6 +52,7 @@ export default class App extends Component {
 
   getMeals(){
       let oMeals = this.getModel();
+
       return oMeals.name.map((meal) => {
           return (
               <form ref="addFoodForm" className="" onSubmit={this.handleSubmit.bind(this)}>
@@ -77,6 +78,7 @@ export default class App extends Component {
   getFoodItems(meal){
       let oMeals = this.getModel(),
       cellStyle = this.getCellStyle();
+
       return oMeals.data[meal].map((item, i) => {
           return (
               <tr>
@@ -96,7 +98,8 @@ export default class App extends Component {
 
   getForm(meal){
       let cellStyle = this.getCellStyle(),
-      inputStyle = "border-box w100"
+      inputStyle = "border-box w100";
+
       return (
           <tr className="bg-white-force">
               <td className={cellStyle}><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
@@ -118,8 +121,9 @@ export default class App extends Component {
   }
 
   handleDelete(meal, i){
-      let date = this.state.date
-      this.setState(this.state.dates[date].meals[meal].splice(i,1))
+      let { date } = this.state;
+
+      this.setState(this.state.dates[date].meals[meal].splice(i,1));
   }
 
   handleSubmit(e){
@@ -132,17 +136,18 @@ export default class App extends Component {
 
   handleArrows(e){
       e.preventDefault();
-      let date = this.state.date,
+      let { date, dates } = this.state,
       day = e.target.className.includes("right") ? 1 : -1,
       formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
-      if(this.state.dates[formattedDate]){
+      if(dates[formattedDate]){
           this.setState({date:formattedDate})
       }
   }
 
   getNutrientMeal(meal){
-      let cellStyle = this.getCellStyle(),
-      date = this.getDate();
+      let { date } = this.state,
+      cellStyle = this.getCellStyle();
+
       return (
           <tr className="bg-white-force">
               <td className={`${cellStyle}`}><span className="metahead">Total</span>Total</td>
@@ -156,8 +161,9 @@ export default class App extends Component {
   }
 
   getMacroTotals(){
-      let date = this.getDate(),
+      let { date } = this.state,
       cellStyle = this.getCellStyle();
+
       return (
           <table className="mx-auto mb3 w100">
               <thead>
@@ -197,11 +203,11 @@ export default class App extends Component {
   }
 
   getCellStyle(){
-      return "border p1"
+      return "border p1";
   }
 
   getDate(){
-      return "2017-07-18"
+      return "2017-07-18";
   }
 
   getNutrientMealTotal(date, meal, nutrient){
@@ -223,16 +229,22 @@ export default class App extends Component {
   }
 
   setPieModel(nutrient){
-      let date = this.getDate(),
+      let { date } = this.state,
       oMeals = this.getModel(),
       pie = model.pie,
       sliceColors = ["darkblue", "darkred", "forestgreen", "orange"]
+
+      let { name } = this.getModel();
+
+      let labels = name.map((meal) => {
+          return meal.charAt(0).toUpperCase() + meal.slice(1);
+      });
 
       let mealNutrientsTotal =  oMeals.name.map((meal) => {
           return oMeals.data[meal].reduce((sum, item) => {
               return sum + item[nutrient]
           },0)
-      })
+      });
 
       return {
           ...pie,
