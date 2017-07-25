@@ -221,7 +221,8 @@ export default class App extends Component {
   setPieModel(nutrient){
       let date = this.getDate(),
       oMeals = this.getModel(),
-      pie = model.pie
+      pie = model.pie,
+      sliceColors = ["darkblue", "darkred", "forestgreen", "orange"]
 
       let mealNutrientsTotal =  oMeals.name.map((meal) => {
           return oMeals.data[meal].reduce((sum, item) => {
@@ -234,8 +235,8 @@ export default class App extends Component {
           labels: ["Breakfast", "Lunch", "Dinner", "Snacks"],
           datasets:[{
               data:mealNutrientsTotal,
-              backgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
-              hoverBackgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
+              backgroundColor: sliceColors,
+              hoverBackgroundColor: sliceColors,
               borderWidth: [0,0,0,0,0,0,0,0],
               legend: {
                   itemStyle: {
