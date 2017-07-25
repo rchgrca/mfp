@@ -114,7 +114,7 @@ export default class App extends Component {
   getSubmitButton(meal){
       return (
           <tr className="bg-white-force">
-              <td className="btn-container right-align" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
+              <td className="btn-container right-align bg-white-force border-none" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
           </tr>
       )
   }
