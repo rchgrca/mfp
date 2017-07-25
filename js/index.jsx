@@ -102,11 +102,11 @@ export default class App extends Component {
       return (
           <tr className="bg-white-force">
               <td className="border"><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="calories" placeholder="Calories" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="carbs" placeholder="Carbs (g)" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="fat" placeholder="Fat (g)" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="protein" placeholder="Protein (g)" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="sugar" placeholder="Sugar (g)" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="calories" placeholder="Calories" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" ref="carbs" placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" ref="fat" placeholder="Fat (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" ref="protein" placeholder="Protein (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" ref="sugar" placeholder="Sugar (g)" className={`${inputStyle} center`}/></td>
           </tr>
       )
   }
