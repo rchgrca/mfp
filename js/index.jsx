@@ -78,7 +78,7 @@ export default class App extends Component {
               <tr>
                   <td className={`${cellStyle} relative`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
-                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete"/>
+                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={this.handleDelete}/>
                   </td>
                   <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
                   <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
@@ -111,6 +111,11 @@ export default class App extends Component {
               <td className="btn-container right-align" colSpan="6"><input type="submit" className="btn not-rounded p1 cursor" value="Add Food" /></td>
           </tr>
       )
+  }
+
+  handleDelete(e){
+      e.preventDefault();
+      console.log("Handle Delete!",e)
   }
 
   handleSubmit(e){
@@ -188,7 +193,7 @@ export default class App extends Component {
   }
 
   getDate(){
-      return "2017-07-17"
+      return "2017-07-18"
   }
 
   getNutrientMealTotal(date, meal, nutrient){
