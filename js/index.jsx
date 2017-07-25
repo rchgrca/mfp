@@ -190,11 +190,13 @@ export default class App extends Component {
   }
 
   getModel(){
-      let { date, dates:{
-          [date]:{
-              meals
+      let {
+          date, dates:{
+              [date]:{
+                  meals
+              }
           }
-      } } = this.state;
+      } = this.state;
       return {
           data:meals,
           name:Object.keys(meals)
