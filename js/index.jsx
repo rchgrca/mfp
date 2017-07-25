@@ -69,7 +69,6 @@ export default class App extends Component {
                           {this.getSubmitButton(meal)}
                       </tbody>
                   </table>
-                  <input type="hidden" name="meal" value={meal}/>
               </div>
           )
       })
@@ -115,7 +114,7 @@ export default class App extends Component {
   getSubmitButton(meal){
       return (
           <tr className="bg-white-force">
-              <td className="btn-container right-align" colSpan="6"><input type="submit" className="btn not-rounded p1 cursor" value="Add Food" /></td>
+              <td className="btn-container right-align" colSpan="6"><button className="btn not-rounded p1 cursor">Add Food</button></td>
           </tr>
       )
   }
