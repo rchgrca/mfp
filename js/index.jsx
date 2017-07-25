@@ -77,12 +77,12 @@ export default class App extends Component {
   getFoodItems(meal){
       let oMeals = this.getModel(),
       cellStyle = this.getCellStyle();
-      return oMeals.data[meal].map((item) => {
+      return oMeals.data[meal].map((item, i) => {
           return (
               <tr>
                   <td className={`${cellStyle} relative`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
-                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={this.handleDelete.bind(this)}/>
+                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={() => {this.handleDelete(meal,i)}}/>
                   </td>
                   <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
                   <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
@@ -117,9 +117,9 @@ export default class App extends Component {
       )
   }
 
-  handleDelete(e){
-      e.preventDefault();
-      console.log("Handle Delete!",e)
+  handleDelete(meal, i){
+      let date = this.state.date
+      this.setState(this.state.dates[date].meals[meal].splice(i,1))
   }
 
   handleSubmit(e){
