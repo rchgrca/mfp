@@ -98,16 +98,16 @@ export default class App extends Component {
 
   getForm(meal){
       let cellStyle = this.getCellStyle(),
-      inputStyle = "border-box w100";
+      inputStyle = "border-box w100 p1";
 
       return (
           <tr className="bg-white-force">
-              <td className={cellStyle}><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
-              <td className={cellStyle}><input type="text" ref="calories" placeholder="Calories" className={inputStyle}/></td>
-              <td className={cellStyle}><input type="text" ref="carbs" placeholder="Carbs (g)" className={inputStyle}/></td>
-              <td className={cellStyle}><input type="text" ref="fat" placeholder="Fat (g)" className={inputStyle}/></td>
-              <td className={cellStyle}><input type="text" ref="protein" placeholder="Protein (g)" className={inputStyle}/></td>
-              <td className={cellStyle}><input type="text" ref="sugar" placeholder="Sugar (g)" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="calories" placeholder="Calories" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="carbs" placeholder="Carbs (g)" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="fat" placeholder="Fat (g)" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="protein" placeholder="Protein (g)" className={inputStyle}/></td>
+              <td className="border"><input type="text" ref="sugar" placeholder="Sugar (g)" className={inputStyle}/></td>
           </tr>
       )
   }
