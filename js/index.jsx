@@ -55,7 +55,7 @@ export default class App extends Component {
 
       return oMeals.name.map((meal) => {
           return (
-              <form ref="addFoodForm" className="" onSubmit={this.handleSubmit.bind(this)}>
+              <div>
                   <table className="mx-auto mb3">
                       <thead>
                           <tr>
@@ -70,7 +70,7 @@ export default class App extends Component {
                       </tbody>
                   </table>
                   <input type="hidden" name="meal" value={meal}/>
-              </form>
+              </div>
           )
       })
   }
