@@ -21,7 +21,7 @@ export default class App extends Component {
 
     return (
         <div className="clearfix px1">
-            <section className="header py1 mb2">
+            <section className="bg-darkblue py1 mb2">
                 <h2 className="center white">mycalpal</h2>
                 <p className="center h5 italic white">"{model.quote}"</p>
             </section>
@@ -97,7 +97,7 @@ export default class App extends Component {
 
   getForm(meal){
       let cellStyle = this.getCellStyle(),
-      inputStyle = "border-box w100 p1";
+      inputStyle = "border-box w100 p1 border-none";
 
       return (
           <tr className="bg-white-force">
@@ -114,7 +114,7 @@ export default class App extends Component {
   getSubmitButton(meal){
       return (
           <tr className="bg-white-force">
-              <td className="btn-container right-align" colSpan="6"><button className="btn not-rounded p1 cursor">Add Food</button></td>
+              <td className="btn-container right-align" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
           </tr>
       )
   }
@@ -149,7 +149,7 @@ export default class App extends Component {
 
       return (
           <tr className="bg-white-force">
-              <td className={`${cellStyle}`}><span className="metahead">Total</span>Total</td>
+              <td className={`${cellStyle}`}><span className="metahead mobile">Total</span>Total</td>
               <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
               <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
               <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>

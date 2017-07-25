@@ -23,6 +23,10 @@ i.fa-trash-o {
     top: 10px;
     right: 5px;
 }
+.button {
+    top: -2px;
+    left: 2px;
+}
 .cursor {
     cursor: pointer;
 }
@@ -38,13 +42,13 @@ i.fa-trash-o {
 ::-webkit-input-placeholder {
    text-align: center;
 }
-.header {
+.bg-darkblue {
     background-color: darkblue;
 }
 
 @media screen and (max-width: 768px) {
-    table {width:100%;}
-    thead tr td, thead tr td div {display: none;}
+    table, button {width:100%;}
+    thead tr td, thead tr td div, .metahead.mobile {display: none;}
     thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
     tr, td {background-color: #fff}
     tr td:first-child {background: #f0f0f0; font-weight:bold;font-size:inherit;}
