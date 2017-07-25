@@ -10,8 +10,7 @@ export default class App extends Component {
   }
 
   render() {
-    let pie = model.pie,
-    gridStyle = "sm-col sm-col-6",
+    let gridStyle = "sm-col sm-col-6",
     arrowStyle = "absolute cursor top-0 fa",
     date = this.getDate(),
     oMeals = this.getModel();
@@ -36,8 +35,12 @@ export default class App extends Component {
                 </div>
             </section>
             <section className={`${gridStyle} visual`}>
-                <div className="center navy">Calories per Meal Today:</div>
-                <Pie data={pie} options={pie.options}/>
+                <div className="center navy">Calories per Meal Today (kcal):</div>
+                <Pie data={this.setPieModel('calories')} options={model.pie.options}/>
+                <div className="center navy mt3">Carbs per Meal Today (g):</div>
+                <Pie data={this.setPieModel('carbs')} options={model.pie.options}/>
+                <div className="center navy mt3">Sugar per Meal Today (g):</div>
+                <Pie data={this.setPieModel('sugar')} options={model.pie.options}/>
             </section>
         </div>
     )
@@ -205,6 +208,36 @@ export default class App extends Component {
           return sum + item[nutrient]
       },0);
   }
+
+  setPieModel(nutrient){
+      let date = this.getDate(),
+      oMeals = this.getModel(),
+      pie = model.pie
+
+      let mealNutrientsTotal =  oMeals.name.map((meal) => {
+          return oMeals.data[meal].reduce((sum, item) => {
+              return sum + item[nutrient]
+          },0)
+      })
+
+      return {
+          ...pie,
+          labels: ["Breakfast", "Lunch", "Dinner", "Snacks"],
+          datasets:[{
+              data:mealNutrientsTotal,
+              backgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
+              hoverBackgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
+              borderWidth: [0,0,0,0,0,0,0,0],
+              legend: {
+                  itemStyle: {
+                      color: '#ffffff',
+                      fontWeight: 'bold'
+                  }
+              },
+          }]
+      }
+  }
+
 }
 
 render(<App/>, document.getElementById('app'));

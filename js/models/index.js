@@ -36,19 +36,6 @@ export default Object.assign({}, {
         }
     },
     pie: {
-        labels: ["Breakfast", "Lunch", "Dinner", "Snacks"],
-        datasets: [{
-            data: [641, 210, 510, 150],
-            backgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
-            hoverBackgroundColor: ["darkblue", "darkred", "forestgreen", "orange"],
-            borderWidth: [0,0,0,0,0,0,0,0],
-            legend: {
-                itemStyle: {
-                    color: '#ffffff',
-                    fontWeight: 'bold'
-                }
-            },
-        }],
         options: {
             responsive: true,
             cutoutPercentage: 0,
