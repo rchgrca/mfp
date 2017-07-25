@@ -185,10 +185,14 @@ export default class App extends Component {
   }
 
   getModel(){
-      let date = this.state.date;
+      let { date, dates:{
+          [date]:{
+              meals
+          }
+      } } = this.state;
       return {
-          data:model.dates[date].meals,
-          name:Object.keys(model.dates[date].meals)
+          data:meals,
+          name:Object.keys(meals)
       }
   }
 
