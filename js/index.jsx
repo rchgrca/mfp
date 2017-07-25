@@ -7,12 +7,16 @@ import { Pie } from 'react-chartjs-2';
 export default class App extends Component {
   constructor(props) {
       super(props)
+      this.state = {
+          date: this.getDate(),
+          dates: model.dates
+      }
   }
 
   render() {
     let gridStyle = "sm-col sm-col-6",
     arrowStyle = "absolute cursor top-0 fa",
-    date = this.getDate(),
+    date = this.state.date,
     oMeals = this.getModel();
 
     return (
@@ -50,7 +54,7 @@ export default class App extends Component {
       let oMeals = this.getModel();
       return oMeals.name.map((meal) => {
           return (
-              <form ref="addFoodForm" className="" onSubmit={this.handleSubmit}>
+              <form ref="addFoodForm" className="" onSubmit={this.handleSubmit.bind(this)}>
                   <table className="mx-auto mb3">
                       <thead>
                           <tr>
@@ -78,7 +82,7 @@ export default class App extends Component {
               <tr>
                   <td className={`${cellStyle} relative`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
-                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={this.handleDelete}/>
+                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={this.handleDelete.bind(this)}/>
                   </td>
                   <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
                   <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
@@ -121,19 +125,19 @@ export default class App extends Component {
   handleSubmit(e){
       e.preventDefault();
       console.log("Add Food Handle Submit!",e)
-      //console.log(this.refs)
+
     //   const author = this.refs.author.value;
     //   const comment = this.refs.comment.value;
   }
 
   handleArrows(e){
       e.preventDefault();
-      let date = this.getDate(),
-      yesterday = moment(date).add(-1, 'days').format('YYYY-MM-DD'),
-      tomorrow = moment(date).add(1, 'days').format('YYYY-MM-DD'),
-      day = e.target.className.includes("right") ? tomorrow : yesterday
-
-      console.log("handleArrows",day)
+      let date = this.state.date,
+      day = e.target.className.includes("right") ? 1 : -1,
+      formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
+      if(this.state.dates[formattedDate]){
+          this.setState({date:formattedDate})
+      }
   }
 
   getNutrientMeal(meal){
@@ -181,7 +185,7 @@ export default class App extends Component {
   }
 
   getModel(){
-      let date = this.getDate();
+      let date = this.state.date;
       return {
           data:model.dates[date].meals,
           name:Object.keys(model.dates[date].meals)

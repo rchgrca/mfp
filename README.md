@@ -11,3 +11,8 @@
   * add unit tests for model
   * functional CSS, write as little CSS as possible
   * use functional programing principles (immutability, composition)
+
+  * get model for day 1 (state)
+  * remove food (from state)
+  * add food (to state)
+  * go forward/backward one model
