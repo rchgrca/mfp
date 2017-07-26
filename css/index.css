@@ -10,6 +10,9 @@ input:focus {
 table {
     border-collapse: collapse;
 }
+td {
+    background-clip: padding-box;
+}
 td .truncate {
     width: 270px;
 }
