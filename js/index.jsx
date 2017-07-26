@@ -17,13 +17,14 @@ export default class App extends Component {
     let gridStyle = "sm-col sm-col-6",
     arrowStyle = "absolute cursor top-0 fa",
     { date } = this.state,
-    oMeals = this.getModel();
+    oMeals = this.getModel(),
+    { quote, pie: { options } } = model;
 
     return (
         <div className="clearfix px1">
             <section className="bg-darkblue py1 mb2">
                 <h2 className="center white">mycalpal</h2>
-                <p className="center h5 italic white">"{model.quote}"</p>
+                <p className="center h5 italic white">"{quote}"</p>
             </section>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
@@ -40,11 +41,11 @@ export default class App extends Component {
             </section>
             <section className={`${gridStyle} visual`}>
                 <div className="center navy">Calories per Meal (kcal):</div>
-                <Pie data={this.setPieModel('calories')} options={model.pie.options}/>
+                <Pie data={this.setPieModel('calories')} options={options}/>
                 <div className="center navy mt3">Carbs per Meal (g):</div>
-                <Pie data={this.setPieModel('carbs')} options={model.pie.options}/>
+                <Pie data={this.setPieModel('carbs')} options={options}/>
                 <div className="center navy mt3">Sugar per Meal (g):</div>
-                <Pie data={this.setPieModel('sugar')} options={model.pie.options}/>
+                <Pie data={this.setPieModel('sugar')} options={options}/>
             </section>
         </div>
     )
@@ -232,7 +233,7 @@ export default class App extends Component {
   setPieModel(nutrient){
       let { date } = this.state,
       oMeals = this.getModel(),
-      pie = model.pie,
+      { pie } = model,
       sliceColors = ["darkblue", "darkred", "forestgreen", "orange"]
 
       let { name } = this.getModel();
