@@ -10,7 +10,7 @@ export default class App extends Component {
       this.state = {
           date: this.getDate(),
           dates: model.dates,
-          tempItem: {food:"Cajun Shrimp",serving:2,calories:230,carbs:3,fat:0,protein:0,sugar:2}
+          tempItem: {}
       }
   }
 
@@ -103,12 +103,12 @@ export default class App extends Component {
 
       return (
           <tr>
-              <td className="border"><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
-              <td className="border"><input type="text" ref="calories" placeholder="Calories" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" ref="carbs" placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" ref="fat" placeholder="Fat (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" ref="protein" placeholder="Protein (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" ref="sugar" placeholder="Sugar (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'food')} placeholder="Food" className={inputStyle}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'calories')} placeholder="Calories" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'carbs')} placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'fat')} placeholder="Fat (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'protein')} placeholder="Protein (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'sugar')} placeholder="Sugar (g)" className={`${inputStyle} center`}/></td>
           </tr>
       )
   }
@@ -125,6 +125,16 @@ export default class App extends Component {
       let { date, dates } = this.state;
 
       this.setState(dates[date].meals[meal].splice(i,1));
+  }
+
+  handleFormChange(meal, item){
+      let { tempItem } = this.state;
+      this.setState({
+          tempItem: {
+              ...tempItem,
+              [item]:event.target.value
+          }
+      })
   }
 
   handleSubmit(){
