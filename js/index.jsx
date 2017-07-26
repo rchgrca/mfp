@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import moment from 'moment';
 import model from './models/index';
 import { Pie } from 'react-chartjs-2';
+import HeaderContainer from './components/header/HeaderContainer.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,14 +20,11 @@ export default class App extends Component {
     arrowStyle = "absolute cursor top-0 fa",
     { date } = this.state,
     oMeals = this.getModel(),
-    { quote, pie: { options } } = model;
+    { quote, title, pie: { options } } = model;
 
     return (
         <div className="clearfix px1">
-            <section className="bg-darkblue py1 mb2">
-                <h2 className="center white">mycalpal</h2>
-                <p className="center h5 italic white">"{quote}"</p>
-            </section>
+            <HeaderContainer title={title} quote={quote}/>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
                     <i className={`${arrowStyle} fa-arrow-left left-0`} onClick={this.handleArrows.bind(this)} aria-hidden="true"></i>
