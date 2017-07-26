@@ -99,7 +99,7 @@ export default class App extends Component {
 
   getForm(meal){
       let cellStyle = this.getCellStyle(),
-      inputStyle = "border-box w100 p1 border-none";
+      inputStyle = this.getInputStyle();
 
       return (
           <tr>
@@ -127,11 +127,12 @@ export default class App extends Component {
   }
 
   handleFormChange(meal, item){
-      let { tempItem } = this.state;
+      let { tempItem } = this.state,
+      { value } = event.target;
       this.setState({
           tempItem: {
               ...tempItem,
-              [item]:(item == 'food') ? event.target.value : parseInt(event.target.value,10)
+              [item]:(item == 'food') ? value : parseInt(value,10)
           }
       })
   }
@@ -238,6 +239,10 @@ export default class App extends Component {
 
   getCellStyle(){
       return "border p1";
+  }
+
+  getInputStyle(){
+      return "border-box w100 p1 border-none";
   }
 
   getDate(){
