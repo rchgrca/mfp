@@ -86,7 +86,7 @@ export default class App extends Component {
               <tr>
                   <td className={`${cellStyle} bg-lavender relative`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
-                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={() => {this.handleDelete(meal,i)}}/>
+                      <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={() => this.handleDelete(meal,i)}/>
                   </td>
                   <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
                   <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
