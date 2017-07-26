@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import moment from 'moment';
 import model from './models/index';
+import methods from './methods/index';
 import { Pie } from 'react-chartjs-2';
 import HeaderContainer from './components/header/HeaderContainer.jsx';
 
@@ -76,7 +77,7 @@ export default class App extends Component {
 
   getFoodItems(meal){
       let oMeals = this.getModel(),
-      cellStyle = this.getCellStyle();
+      cellStyle = methods.getCellStyle();
 
       return oMeals.data[meal].map((item, i) => {
           return (
@@ -96,8 +97,8 @@ export default class App extends Component {
   }
 
   getForm(meal){
-      let cellStyle = this.getCellStyle(),
-      inputStyle = this.getInputStyle();
+      let cellStyle = methods.getCellStyle(),
+      inputStyle = methods.getInputStyle();
 
       return (
           <tr>
@@ -178,7 +179,7 @@ export default class App extends Component {
 
   getNutrientMeal(meal){
       let { date } = this.state,
-      cellStyle = this.getCellStyle();
+      cellStyle = methods.getCellStyle();
 
       return (
           <tr>
@@ -194,7 +195,7 @@ export default class App extends Component {
 
   getMacroTotals(){
       let { date } = this.state,
-      cellStyle = this.getCellStyle();
+      cellStyle = methods.getCellStyle();
 
       return (
           <table className="mx-auto mb3 w100">
@@ -234,14 +235,6 @@ export default class App extends Component {
           data:meals,
           name:Object.keys(meals)
       }
-  }
-
-  getCellStyle(){
-      return "border p1";
-  }
-
-  getInputStyle(){
-      return "border-box w100 p1 border-none";
   }
 
   getDate(){
