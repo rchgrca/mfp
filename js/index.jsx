@@ -209,7 +209,17 @@ export default class App extends Component {
   }
 
   getDate(){
-      return "2017-07-18";
+      let { dates } = model,
+      aDates = Object.keys(dates),
+      date;
+
+      for (let i=0;i<aDates.length;i++){
+          if(aDates[i+1]){
+              date = moment(aDates[i]).isAfter(aDates[i+1]) ? date : aDates[i+1]
+          }
+      }
+
+      return date;
   }
 
   getNutrientMealTotal(date, meal, nutrient){
