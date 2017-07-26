@@ -115,7 +115,7 @@ export default class App extends Component {
   getSubmitButton(meal){
       return (
           <tr>
-              <td className="btn-container right-align border-none" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
+              <td className="btn-container right-align border-none" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative" value={meal} onClick={this.handleSubmit.bind(this)}>Add Food</button></td>
           </tr>
       )
   }
@@ -126,12 +126,24 @@ export default class App extends Component {
       this.setState(this.state.dates[date].meals[meal].splice(i,1));
   }
 
-  handleSubmit(e){
-      e.preventDefault();
-      console.log("Add Food Handle Submit!",e)
+  handleSubmit(){
+      let meal = event.target.value,
+      { date, dates } = this.state,
+      item = {food:"Cajun Shrimp",serving:2,calories:230,carbs:3,fat:0,protein:0,sugar:2};
 
-    //   const author = this.refs.author.value;
-    //   const comment = this.refs.comment.value;
+      this.setState({
+          dates:{
+              [date]:{
+                  meals:{
+                      ...dates[date].meals,
+                      [meal]:[
+                          ...dates[date].meals[meal],
+                          item
+                      ]
+                  }
+              }
+          }
+      });
   }
 
   handleArrows(e){
