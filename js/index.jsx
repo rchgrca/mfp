@@ -81,15 +81,15 @@ export default class App extends Component {
       return oMeals.data[meal].map((item, i) => {
           return (
               <tr>
-                  <td className={`${cellStyle} relative`}>
+                  <td className={`${cellStyle} bg-lavender relative`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
                       <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={() => {this.handleDelete(meal,i)}}/>
                   </td>
-                  <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
-                  <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
-                  <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{item.fat} g</td>
-                  <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{item.protein} g</td>
-                  <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{item.sugar} g</td>
+                  <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Calories: </span>{item.calories} cals</td>
+                  <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Carbs: </span>{item.carbs} g</td>
+                  <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Fat: </span>{item.fat} g</td>
+                  <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Protein: </span>{item.protein} g</td>
+                  <td className={`${cellStyle} bg-lavender center`}><span className="metahead">Sugar: </span>{item.sugar} g</td>
               </tr>
           )
       })
@@ -100,7 +100,7 @@ export default class App extends Component {
       inputStyle = "border-box w100 p1 border-none";
 
       return (
-          <tr className="bg-white-force">
+          <tr>
               <td className="border"><input type="text" ref="item" placeholder="Food" className={inputStyle}/></td>
               <td className="border"><input type="text" ref="calories" placeholder="Calories" className={`${inputStyle} center`}/></td>
               <td className="border"><input type="text" ref="carbs" placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
@@ -113,8 +113,8 @@ export default class App extends Component {
 
   getSubmitButton(meal){
       return (
-          <tr className="bg-white-force">
-              <td className="btn-container right-align bg-white-force border-none" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
+          <tr>
+              <td className="btn-container right-align border-none" colSpan="6"><button className="btn mb1 bg-darkblue rounded px2 py1 cursor bg-darkblue white border-none button relative">Add Food</button></td>
           </tr>
       )
   }
@@ -148,13 +148,13 @@ export default class App extends Component {
       cellStyle = this.getCellStyle();
 
       return (
-          <tr className="bg-white-force">
-              <td className={`${cellStyle}`}><span className="metahead mobile">Total</span>Total</td>
-              <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
-              <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
-              <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>
-              <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{this.getNutrientMealTotal(date, meal, "protein")} g</td>
-              <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{this.getNutrientMealTotal(date, meal, "sugar")} g</td>
+          <tr>
+              <td className={`${cellStyle} bg-lavender bold`}><span className="metahead mobile">Total</span>Total</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Protein: </span>{this.getNutrientMealTotal(date, meal, "protein")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Sugar: </span>{this.getNutrientMealTotal(date, meal, "sugar")} g</td>
           </tr>
       )
   }
@@ -176,13 +176,13 @@ export default class App extends Component {
                   </tr>
               </thead>
               <tbody>
-                  <tr className="bg-white-force">
-                      <td className={`${cellStyle} center`}><span className="metahead">Total Today</span></td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Protein: </span>{this.getNutrientTotals(date, "protein")} g</td>
-                      <td className={`${cellStyle} center`}><span className="metahead">Sugar: </span>{this.getNutrientTotals(date, "sugar")} g</td>
+                  <tr>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Total Today</span></td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Protein: </span>{this.getNutrientTotals(date, "protein")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Sugar: </span>{this.getNutrientTotals(date, "sugar")} g</td>
                   </tr>
               </tbody>
           </table>
