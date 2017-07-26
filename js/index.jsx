@@ -57,7 +57,7 @@ export default class App extends Component {
 
       return oMeals.name.map((meal) => {
           return (
-              <div>
+              <form>
                   <table className="mx-auto mb3">
                       <thead>
                           <tr>
@@ -71,7 +71,7 @@ export default class App extends Component {
                           {this.getSubmitButton(meal)}
                       </tbody>
                   </table>
-              </div>
+              </form>
           )
       })
   }
@@ -123,7 +123,6 @@ export default class App extends Component {
 
   handleDelete(meal, i){
       let { date, dates } = this.state;
-
       this.setState(dates[date].meals[meal].splice(i,1));
   }
 
@@ -139,7 +138,10 @@ export default class App extends Component {
 
   handleSubmit(){
       let meal = event.target.value,
-      { date, dates, tempItem } = this.state
+      { date, dates, tempItem } = this.state,
+      aForms = document.getElementsByTagName('form');
+
+      event.preventDefault();
 
       this.setState({
           dates:{
@@ -153,16 +155,24 @@ export default class App extends Component {
                       ]
                   }
               }
-          }
+          },
+          tempItem:{}
       });
+
+      for (let i=0;i<aForms.length;i++){
+          aForms[i].reset()
+      }
   }
 
   handleArrows(){
       let { date, dates } = this.state,
       day = event.target.className.includes("right") ? 1 : -1,
       formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
+
       if(dates[formattedDate]){
-          this.setState({date:formattedDate})
+          this.setState({
+              date:formattedDate
+          })
       }
   }
 
