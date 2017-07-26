@@ -17,8 +17,8 @@ export default class App extends Component {
   }
 
   render() {
-    let gridStyle = "sm-col sm-col-6",
-    arrowStyle = "absolute cursor top-0 fa",
+    let gridStyle = methods.getGridStyle(),
+    arrowStyle = methods.getArrowStyle(),
     { date } = this.state,
     oMeals = this.getModel(),
     { quote, title, pie: { options } } = model;

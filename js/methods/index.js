@@ -1,4 +1,12 @@
 export default Object.assign({}, {
+    getGridStyle(){
+        return "sm-col sm-col-6";
+    },
+
+    getArrowStyle(){
+        return "absolute cursor top-0 fa";
+    },
+
     getCellStyle(){
         return "border p1";
     },
