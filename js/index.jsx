@@ -9,7 +9,8 @@ export default class App extends Component {
       super(props)
       this.state = {
           date: this.getDate(),
-          dates: model.dates
+          dates: model.dates,
+          tempItem: {food:"Cajun Shrimp",serving:2,calories:230,carbs:3,fat:0,protein:0,sugar:2}
       }
   }
 
@@ -128,8 +129,7 @@ export default class App extends Component {
 
   handleSubmit(){
       let meal = event.target.value,
-      { date, dates } = this.state,
-      item = {food:"Cajun Shrimp",serving:2,calories:230,carbs:3,fat:0,protein:0,sugar:2};
+      { date, dates, tempItem } = this.state
 
       this.setState({
           dates:{
@@ -139,7 +139,7 @@ export default class App extends Component {
                       ...dates[date].meals,
                       [meal]:[
                           ...dates[date].meals[meal],
-                          item
+                          tempItem
                       ]
                   }
               }
