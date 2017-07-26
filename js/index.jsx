@@ -14,6 +14,8 @@ export default class App extends Component {
           dates: model.dates,
           tempItem: {}
       }
+
+      this.handleArrows = this.handleArrows.bind(this);
   }
 
   render() {
@@ -28,8 +30,8 @@ export default class App extends Component {
             <HeaderContainer title={title} quote={quote}/>
             <section className={`${gridStyle} pb2 main`}>
                 <div className="relative arrow-container">
-                    <i className={`${arrowStyle} fa-arrow-left left-0`} onClick={this.handleArrows.bind(this)} aria-hidden="true"></i>
-                    <i className={`${arrowStyle} fa-arrow-right right-0`} onClick={this.handleArrows.bind(this)} aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-left left-0`} onClick={this.handleArrows} aria-hidden="true"></i>
+                    <i className={`${arrowStyle} fa-arrow-right right-0`} onClick={this.handleArrows} aria-hidden="true"></i>
                 </div>
                 <div className="day">
                     <div className="center mb1 date navy">{moment(date).format('MMMM Do, YYYY')}</div>
