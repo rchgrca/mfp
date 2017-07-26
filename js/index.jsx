@@ -131,7 +131,7 @@ export default class App extends Component {
       this.setState({
           tempItem: {
               ...tempItem,
-              [item]:event.target.value
+              [item]:(item == 'food') ? event.target.value : parseInt(event.target.value,10)
           }
       })
   }
