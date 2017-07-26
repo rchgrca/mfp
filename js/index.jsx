@@ -126,9 +126,9 @@ export default class App extends Component {
       this.setState(dates[date].meals[meal].splice(i,1));
   }
 
-  handleFormChange(meal, item){
+  handleFormChange(meal, item, e){
       let { tempItem } = this.state,
-      { value } = event.target;
+      { value } = e.target;
       this.setState({
           tempItem: {
               ...tempItem,
@@ -137,12 +137,11 @@ export default class App extends Component {
       })
   }
 
-  handleSubmit(){
-      let meal = event.target.value,
+  handleSubmit(e){
+      e.preventDefault();
+      let meal = e.target.value,
       { date, dates, tempItem } = this.state,
       aForms = document.getElementsByTagName('form');
-
-      event.preventDefault();
 
       this.setState({
           dates:{
@@ -165,9 +164,9 @@ export default class App extends Component {
       }
   }
 
-  handleArrows(){
+  handleArrows(e){
       let { date, dates } = this.state,
-      day = event.target.className.includes("right") ? 1 : -1,
+      day = e.target.className.includes("right") ? 1 : -1,
       formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
 
       if(dates[formattedDate]){
