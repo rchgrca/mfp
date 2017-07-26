@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
       super(props)
       this.state = {
-          date: this.getDate(),
+          date: methods.getDate(),
           dates: model.dates,
           tempItem: {}
       }
@@ -237,19 +237,7 @@ export default class App extends Component {
       }
   }
 
-  getDate(){
-      let { dates } = model,
-      aDates = Object.keys(dates),
-      date;
 
-      for (let i=0;i<aDates.length;i++){
-          if(aDates[i+1]){
-              date = moment(aDates[i]).isAfter(aDates[i+1]) ? date : aDates[i+1]
-          }
-      }
-
-      return date;
-  }
 
   getNutrientMealTotal(date, meal, nutrient){
       let oMeals = this.getModel();
