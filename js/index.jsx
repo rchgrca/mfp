@@ -121,9 +121,9 @@ export default class App extends Component {
   }
 
   handleDelete(meal, i){
-      let { date } = this.state;
+      let { date, dates } = this.state;
 
-      this.setState(this.state.dates[date].meals[meal].splice(i,1));
+      this.setState(dates[date].meals[meal].splice(i,1));
   }
 
   handleSubmit(){
@@ -133,6 +133,7 @@ export default class App extends Component {
 
       this.setState({
           dates:{
+              ...dates,
               [date]:{
                   meals:{
                       ...dates[date].meals,
