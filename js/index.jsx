@@ -155,8 +155,7 @@ export default class App extends Component {
                       ]
                   }
               }
-          },
-          tempItem:{}
+          }
       });
 
       for (let i=0;i<aForms.length;i++){
