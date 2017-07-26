@@ -92,16 +92,7 @@ export default Object.assign({}, {
                 ]
             },
             exercise: [{activity: "Cycling", burned: 500}, {activity: "Weight Training", burned: 800}]
-        },
-        "2017-07-19":{
-            meals: {
-                breakfast:[],
-                lunch:[],
-                dinner:[],
-                snacks:[]
-            },
-            exercise: []
-        },
+        }
     },
     pie: {
         options: {

@@ -22,9 +22,9 @@ export default class App extends Component {
   render() {
     let gridStyle = methods.getGridStyle(),
     arrowStyle = methods.getArrowStyle(),
-    { date } = this.state,
-    oMeals = this.getModel(),
-    { quote, title, pie: { options } } = model;
+    oMeals = this.getFoodDiary(),
+    { quote, title, pie: { options } } = model,
+    { date } = this.state;
 
     return (
         <div className="clearfix px1">
@@ -55,7 +55,7 @@ export default class App extends Component {
   }
 
   getMeals(){
-      let oMeals = this.getModel();
+      let oMeals = this.getFoodDiary();
 
       return oMeals.name.map((meal) => {
           return (
@@ -79,7 +79,7 @@ export default class App extends Component {
   }
 
   getFoodItems(meal){
-      let oMeals = this.getModel(),
+      let oMeals = this.getFoodDiary(),
       cellStyle = methods.getCellStyle();
 
       return oMeals.data[meal].map((item, i) => {
@@ -226,7 +226,7 @@ export default class App extends Component {
       )
   }
 
-  getModel(){
+  getFoodDiary(){
       let {
           date, dates:{
               [date]:{
@@ -243,14 +243,14 @@ export default class App extends Component {
 
 
   getNutrientMealTotal(date, meal, nutrient){
-      let oMeals = this.getModel();
+      let oMeals = this.getFoodDiary();
       return oMeals.data[meal].reduce((sum, item) => {
           return sum + item[nutrient]
       },0);
   }
 
   getNutrientTotals(date, nutrient){
-      let oMeals = this.getModel();
+      let oMeals = this.getFoodDiary();
       return oMeals.name.map((meal) => {
           return oMeals.data[meal]
       }).reduce((a,b) => {
@@ -262,11 +262,11 @@ export default class App extends Component {
 
   setPieModel(nutrient){
       let { date } = this.state,
-      oMeals = this.getModel(),
+      oMeals = this.getFoodDiary(),
       { pie } = model,
       sliceColors = ["darkblue", "darkred", "forestgreen", "orange"]
 
-      let { name } = this.getModel();
+      let { name } = this.getFoodDiary();
 
       let labels = name.map((meal) => {
           return meal.charAt(0).toUpperCase() + meal.slice(1);
