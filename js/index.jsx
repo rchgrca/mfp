@@ -147,10 +147,9 @@ export default class App extends Component {
       });
   }
 
-  handleArrows(e){
-      e.preventDefault();
+  handleArrows(){
       let { date, dates } = this.state,
-      day = e.target.className.includes("right") ? 1 : -1,
+      day = event.target.className.includes("right") ? 1 : -1,
       formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
       if(dates[formattedDate]){
           this.setState({date:formattedDate})
