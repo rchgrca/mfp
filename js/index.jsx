@@ -132,12 +132,10 @@ export default class App extends Component {
       let { tempItem } = this.state,
       { value } = e.target;
 
-      value = (item == 'food') ? value : parseInt(value,10)
-
       this.setState({
           tempItem: {
               ...tempItem,
-              [item]: value
+              [item]: (item == 'food') ? value : parseInt(value,10)
           }
       })
   }
