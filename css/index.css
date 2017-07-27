@@ -65,6 +65,7 @@ i.fa-trash-o {
     }
     input[type='text'] {
         padding: 15px;
+        text-align: center;
     }
     button {
         text-align: center;
