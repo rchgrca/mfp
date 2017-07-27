@@ -50,7 +50,7 @@ i.fa-trash-o {
     table, button {width:100%;}
     thead tr td, thead tr td div, .metahead.mobile {display: none;}
     thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
-    thead tr td div:first-child {display: block; color: #000;}
+    thead tr td div:first-child {display: block;}
     tr, td {background-color: #fff}
     tr td:first-child {font-weight:bold;font-size:inherit;}
     tbody td {display: block;  text-align:center; border-bottom: 0 !important;}
