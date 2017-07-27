@@ -176,12 +176,13 @@ export default class App extends Component {
 
   handleFormChange(meal, item, e){
       let { tempItem } = this.state,
-      { value } = e.target;
+      { value } = e.target,
+      newValue = (item == 'food') ? value : parseInt(value,10);
 
       this.setState({
           tempItem: {
               ...tempItem,
-              [item]: (item == 'food') ? value : parseInt(value,10)
+              [item]: newValue
           }
       })
   }
