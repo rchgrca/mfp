@@ -60,6 +60,9 @@ i.fa-trash-o {
         display: block;
         text-align:center;
     }
+    td .truncate {
+        width: auto;
+    }
     input[type='text'] {
         padding: 15px;
     }
