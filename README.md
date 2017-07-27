@@ -26,6 +26,7 @@
     * display some calculation for the total nutrition values for the day
     * minimal support for adding and removing food items
   * Extra
+    * compatible on Firefox, Safari (IE not functional, no IE tools)
     * responsive user-interface
     * different meals to segment food (breakfast, lunch, dinner, snacks)
     * calculation of nutrition values per meal
