@@ -18,6 +18,14 @@ export default Object.assign({}, {
         return "border-box w100 p1 border-none";
     },
 
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    },
+
     getDate(){
         let { dates } = model,
         aDates = Object.keys(dates),

@@ -148,20 +148,22 @@ export default class App extends Component {
       { date, dates, tempItem } = this.state,
       aForms = document.getElementsByTagName('form');
 
-      this.setState({
-          dates:{
-              ...dates,
-              [date]:{
-                  meals:{
-                      ...dates[date].meals,
-                      [meal]:[
-                          ...dates[date].meals[meal],
-                          tempItem
-                      ]
+      if(!methods.isEmpty(tempItem)){
+          this.setState({
+              dates:{
+                  ...dates,
+                  [date]:{
+                      meals:{
+                          ...dates[date].meals,
+                          [meal]:[
+                              ...dates[date].meals[meal],
+                              tempItem
+                          ]
+                      }
                   }
               }
-          }
-      });
+          })
+      }
 
       for (let i=0;i<aForms.length;i++){
           aForms[i].reset()
