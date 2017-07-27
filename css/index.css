@@ -47,38 +47,48 @@ i.fa-trash-o {
 }
 
 @media screen and (max-width: 768px) {
-    table, button {width:100%;}
-    thead tr td, thead tr td div, .metahead.mobile, .macro-totals thead tr:first-child {display: none;}
-    thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
-    thead tr td div:first-child {display: block;}
-    tr, td {background-color: #fff}
-    tr td:first-child {font-weight:bold;font-size:inherit;}
-    tbody td {display: block;  text-align:center; border-bottom: 0 !important;}
+    table, button, td .truncate {
+        width:100%;
+    }
+    thead tr td, thead tr td div, .metahead.mobile, .macro-totals thead tr:first-child {
+        display: none;
+    }
+    thead tr td:first-child {
+        display: block;
+        background-color: #fff;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    thead tr td div:first-child, tbody td, .metahead {
+        display: block;
+    }
+    tr, td {
+        background-color: #fff;
+    }
+    tr td:first-child {
+        font-weight:bold;
+        font-size:inherit;
+    }
+    tbody td {
+        text-align:center;
+        border-bottom: 0 !important;
+    }
     tbody td:before {
         content: attr(data-th);
         display: block;
         text-align:center;
     }
-    td .truncate {
-        width: 100%;
-    }
-    input[type='text'] {
+    input[type='text'], .button{
         padding: 15px;
-        text-align: center;
     }
-    button {
+    input[type='text'], button, .btn-container {
         text-align: center;
     }
     .metahead {
-        display: block;
         font-style: italic;
     }
     .button {
-        padding: 15px;
         position: static;
-    }
-    .btn-container {
-        text-align: center;
     }
     .mobile-food-name {
         background-color: darkblue;
