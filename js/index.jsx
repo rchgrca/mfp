@@ -85,7 +85,7 @@ export default class App extends Component {
       return oMeals.data[meal].map((item, i) => {
           return (
               <tr>
-                  <td className={`${cellStyle} bg-lavender relative`}>
+                  <td className={`${cellStyle} bg-lavender relative mobile-food-name`}>
                       <div className="truncate mr2" title={item.food}>{item.food}</div>
                       <i className="fa fa-trash-o absolute right-0 cursor" title="Delete" onClick={() => this.handleDelete(meal,i)}/>
                   </td>

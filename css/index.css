@@ -48,12 +48,11 @@ i.fa-trash-o {
 
 @media screen and (max-width: 768px) {
     table, button {width:100%;}
-    table {border-bottom: 1px solid gray; }
     thead tr td, thead tr td div, .metahead.mobile {display: none;}
     thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
     thead tr td div:first-child {display: block; color: #000;}
     tr, td {background-color: #fff}
-    tr td:first-child {background: darkblue; color: #fff;font-weight:bold;font-size:inherit;}
+    tr td:first-child {font-weight:bold;font-size:inherit;}
     tbody td {display: block;  text-align:center; border-bottom: 0 !important;}
     tbody td:before {
         content: attr(data-th);
@@ -80,5 +79,9 @@ i.fa-trash-o {
     }
     .btn-container {
         text-align: center;
+    }
+    .mobile-food-name {
+        background-color: darkblue;
+        color: #fff;
     }
 }
