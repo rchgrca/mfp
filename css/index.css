@@ -73,19 +73,11 @@ i.fa-trash-o {
         text-align:center;
         border-bottom: 0 !important;
     }
-    tbody td:before {
-        content: attr(data-th);
-        display: block;
-        text-align:center;
-    }
     input[type='text'], .button{
         padding: 15px;
     }
     input[type='text'], button, .btn-container {
         text-align: center;
-    }
-    .metahead {
-        font-style: italic;
     }
     .button {
         position: static;
