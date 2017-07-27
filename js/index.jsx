@@ -194,9 +194,15 @@ export default class App extends Component {
       aForms = document.getElementsByTagName('form'),
       aRefs = Object.keys(this.refs).filter((ref) => {
           return ref.includes(meal)
-      });
+      }),
+      isTempItemValid = !!tempItem.calories &&
+                        !!tempItem.carbs &&
+                        !!tempItem.fat &&
+                        !!tempItem.protein &&
+                        !!tempItem.sugar ? true : false;
 
-      if(!methods.isEmpty(tempItem)){
+
+      if(!methods.isEmpty(tempItem) && isTempItemValid){
           this.setState({
               dates:{
                   ...dates,
