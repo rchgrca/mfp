@@ -61,7 +61,7 @@ i.fa-trash-o {
         text-align:center;
     }
     td .truncate {
-        width: auto;
+        width: 100%;
     }
     input[type='text'] {
         padding: 15px;
