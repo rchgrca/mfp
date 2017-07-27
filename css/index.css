@@ -48,7 +48,7 @@ i.fa-trash-o {
 
 @media screen and (max-width: 768px) {
     table, button {width:100%;}
-    thead tr td, thead tr td div, .metahead.mobile {display: none;}
+    thead tr td, thead tr td div, .metahead.mobile, .macro-totals thead tr:first-child {display: none;}
     thead tr td:first-child {display: block; background-color: #fff;margin-bottom: 10px; text-align: center;}
     thead tr td div:first-child {display: block;}
     tr, td {background-color: #fff}
@@ -83,5 +83,8 @@ i.fa-trash-o {
     .mobile-food-name {
         background-color: darkblue;
         color: #fff;
+    }
+    .macro-totals {
+        border-bottom: 1px solid gray;
     }
 }

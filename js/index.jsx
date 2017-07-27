@@ -201,7 +201,7 @@ export default class App extends Component {
       cellStyle = methods.getCellStyle();
 
       return (
-          <table className="mx-auto mb3 w100">
+          <table className="mx-auto mb3 w100 macro-totals">
               <thead>
                   <tr>
                       <td><div className="bold">Total Today</div></td>
