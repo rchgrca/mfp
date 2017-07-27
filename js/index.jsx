@@ -161,7 +161,8 @@ export default class App extends Component {
                           ]
                       }
                   }
-              }
+              },
+              tempItem:{}
           })
       }
 
