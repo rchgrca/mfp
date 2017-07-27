@@ -170,11 +170,14 @@ export default class App extends Component {
   }
 
   handleDelete(meal, i){
+      // find specific item array element and remove
       let { date, dates } = this.state;
       this.setState(dates[date].meals[meal].splice(i,1));
   }
 
   handleFormChange(meal, item, e){
+      // as entries are input, insure that macro values are integers and
+      // then update tempItem in state
       let { tempItem } = this.state,
       { value } = e.target,
       newValue = (item == 'food') ? value : parseInt(value,10);
@@ -188,6 +191,9 @@ export default class App extends Component {
   }
 
   handleSubmit(e){
+      // insure tempItem is not empty and has all the food and macro values required,
+      // then update state.  when done, insure all form input text values are reset
+      // and have a value of ''
       e.preventDefault();
       let meal = e.target.value,
       { date, dates, tempItem } = this.state,
@@ -230,6 +236,7 @@ export default class App extends Component {
   }
 
   handleArrows(e){
+      // navigate dates in the Food Diary model
       let { date, dates } = this.state,
       day = e.target.className.includes("right") ? 1 : -1,
       formattedDate = moment(date).add(day, 'days').format('YYYY-MM-DD')
@@ -242,6 +249,7 @@ export default class App extends Component {
   }
 
   getFoodDiary(){
+      // convenience method for getting today's Food Diary data
       let {
           date, dates:{
               [date]:{
@@ -258,6 +266,7 @@ export default class App extends Component {
 
 
   getNutrientMealTotal(date, meal, nutrient){
+      // calculate the total of calories, macros nutrients per meal
       let oMeals = this.getFoodDiary();
       return oMeals.data[meal].reduce((sum, item) => {
           return sum + item[nutrient]
@@ -265,6 +274,7 @@ export default class App extends Component {
   }
 
   getNutrientTotals(date, nutrient){
+      // calculate the total number of calories, macro nutrients per day
       let oMeals = this.getFoodDiary();
       return oMeals.name.map((meal) => {
           return oMeals.data[meal]
@@ -276,6 +286,7 @@ export default class App extends Component {
   }
 
   setPieModel(nutrient){
+      // supply each graph with the appropriate calorie, macro nutrient data
       let { date } = this.state,
       oMeals = this.getFoodDiary(),
       { pie } = model,
