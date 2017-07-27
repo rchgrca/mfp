@@ -105,12 +105,12 @@ export default class App extends Component {
 
       return (
           <tr>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'food')} placeholder="Food" className={inputStyle}/></td>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'calories')} placeholder="Calories" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'carbs')} placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'fat')} placeholder="Fat (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'protein')} placeholder="Protein (g)" className={`${inputStyle} center`}/></td>
-              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'sugar')} placeholder="Sugar (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'food')} ref={`${meal}-food`} placeholder="Food" className={inputStyle}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'calories')} ref={`${meal}-calories`} placeholder="Calories" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'carbs')} ref={`${meal}-carbs`} placeholder="Carbs (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'fat')} ref={`${meal}-fat`} placeholder="Fat (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'protein')} ref={`${meal}-protein`} placeholder="Protein (g)" className={`${inputStyle} center`}/></td>
+              <td className="border"><input type="text" onChange={this.handleFormChange.bind(this, meal, 'sugar')} ref={`${meal}-sugar`} placeholder="Sugar (g)" className={`${inputStyle} center`}/></td>
           </tr>
       )
   }
@@ -191,7 +191,10 @@ export default class App extends Component {
       e.preventDefault();
       let meal = e.target.value,
       { date, dates, tempItem } = this.state,
-      aForms = document.getElementsByTagName('form');
+      aForms = document.getElementsByTagName('form'),
+      aRefs = Object.keys(this.refs).filter((ref) => {
+          return ref.includes(meal)
+      });
 
       if(!methods.isEmpty(tempItem)){
           this.setState({
@@ -213,6 +216,10 @@ export default class App extends Component {
 
       for (let i=0;i<aForms.length;i++){
           aForms[i].reset()
+      }
+
+      for (let i=0;i<aRefs.length;i++){
+          this.refs[aRefs[i]].value = '';
       }
   }
 
