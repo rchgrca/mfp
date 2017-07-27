@@ -123,6 +123,52 @@ export default class App extends Component {
       )
   }
 
+  getNutrientMeal(meal){
+      let { date } = this.state,
+      cellStyle = methods.getCellStyle();
+
+      return (
+          <tr>
+              <td className={`${cellStyle} bg-lavender bold`}><span className="metahead mobile">Total</span>Total</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Protein: </span>{this.getNutrientMealTotal(date, meal, "protein")} g</td>
+              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Sugar: </span>{this.getNutrientMealTotal(date, meal, "sugar")} g</td>
+          </tr>
+      )
+  }
+
+  getMacroTotals(){
+      let { date } = this.state,
+      cellStyle = methods.getCellStyle();
+
+      return (
+          <table className="mx-auto mb3 w100 macro-totals">
+              <thead>
+                  <tr>
+                      <td><div className="bold">Total Today</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Calories</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Carbs</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Fat</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Protein</div></td>
+                      <td className={`${cellStyle} center`}><div className="">Sugar</div></td>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Total Today</span></td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Protein: </span>{this.getNutrientTotals(date, "protein")} g</td>
+                      <td className={`${cellStyle} center bold`}><span className="metahead">Sugar: </span>{this.getNutrientTotals(date, "sugar")} g</td>
+                  </tr>
+              </tbody>
+          </table>
+      )
+  }
+
   handleDelete(meal, i){
       let { date, dates } = this.state;
       this.setState(dates[date].meals[meal].splice(i,1));
@@ -179,52 +225,6 @@ export default class App extends Component {
               date:formattedDate
           })
       }
-  }
-
-  getNutrientMeal(meal){
-      let { date } = this.state,
-      cellStyle = methods.getCellStyle();
-
-      return (
-          <tr>
-              <td className={`${cellStyle} bg-lavender bold`}><span className="metahead mobile">Total</span>Total</td>
-              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Calories: </span>{this.getNutrientMealTotal(date, meal, "calories")} cals</td>
-              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Carbs: </span>{this.getNutrientMealTotal(date, meal, "carbs")} g</td>
-              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Fat: </span>{this.getNutrientMealTotal(date, meal, "fat")} g</td>
-              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Protein: </span>{this.getNutrientMealTotal(date, meal, "protein")} g</td>
-              <td className={`${cellStyle} bg-lavender bold center`}><span className="metahead">Sugar: </span>{this.getNutrientMealTotal(date, meal, "sugar")} g</td>
-          </tr>
-      )
-  }
-
-  getMacroTotals(){
-      let { date } = this.state,
-      cellStyle = methods.getCellStyle();
-
-      return (
-          <table className="mx-auto mb3 w100 macro-totals">
-              <thead>
-                  <tr>
-                      <td><div className="bold">Total Today</div></td>
-                      <td className={`${cellStyle} center`}><div className="">Calories</div></td>
-                      <td className={`${cellStyle} center`}><div className="">Carbs</div></td>
-                      <td className={`${cellStyle} center`}><div className="">Fat</div></td>
-                      <td className={`${cellStyle} center`}><div className="">Protein</div></td>
-                      <td className={`${cellStyle} center`}><div className="">Sugar</div></td>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Total Today</span></td>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Calories: </span>{this.getNutrientTotals(date, "calories")} cals</td>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Carbs: </span>{this.getNutrientTotals(date, "carbs")} g</td>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Fat: </span>{this.getNutrientTotals(date, "fat")} g</td>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Protein: </span>{this.getNutrientTotals(date, "protein")} g</td>
-                      <td className={`${cellStyle} center bold`}><span className="metahead">Sugar: </span>{this.getNutrientTotals(date, "sugar")} g</td>
-                  </tr>
-              </tbody>
-          </table>
-      )
   }
 
   getFoodDiary(){
