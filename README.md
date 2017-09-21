@@ -1,7 +1,7 @@
-# MyFitnessPal Coding Exercise
+# Calorie Counter Prototype
 
 * Richard L. Garcia ( http://rchgrca.io/resume/ )
-  * MyFitnessPal coding exercise:  http://rchgrca.io/mfp
+  * prototype URL (public):  http://rchgrca.io/mfp
 
 * Requires:
   * node http server, e.g. https://github.com/itsananderson/node-web-server-cli
@@ -35,12 +35,3 @@
     * pie charts
     * jasmine unit tests for model
     * build system on CircleCi
-
-* Analytics
-  * Page load performance
-    * mfp web: https://www.webpagetest.org/result/170726_R5_11PH/
-    * mfp mobile: https://www.webpagetest.org/result/170726_Z1_11QF/
-    * myfitnesspal web: https://www.webpagetest.org/result/170726_M0_1P3M/
-    * myfitnesspal mobile: https://www.webpagetest.org/result/170726_7M_1P2C/  (huge bg image)
-  * CSS stat
-    * mfp http://cssstats.com/stats?link=http%3A%2F%2Frchgrca.io%2Fmfp%2Fcss%2Findex.css (low specificity)
